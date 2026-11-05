@@ -1,0 +1,24 @@
+{% assign block = "" %}
+{% if include.paperurl %}
+{% capture block %}{{ block }}<a href="{{ include.paperurl }}">paper</a> | {% endcapture %}
+{% endif %}
+{% if include.codeurl %}
+{% capture block %}{{ block }}<a href="{{ include.codeurl }}">code{% if include.code_stars %} ★{{ include.code_stars }}{% endif %}</a> | {% endcapture %}
+{% endif %}
+{% if include.projectpageurl %}
+{% capture block %}{{ block }}<a href="{{ include.projectpageurl }}">projectpage</a> | {% endcapture %}
+{% endif %}
+{% if include.videourl %}
+{% capture block %}{{ block }}<a href="{{ include.videourl }}">video</a> | {% endcapture %}
+{% endif %}
+{% if include.slidesurl %}
+{% capture block %}{{ block }}<a href="{{ include.slidesurl }}">slides</a> | {% endcapture %}
+{% endif %}
+{% if include.bibtexurl %}
+{% capture block %}{{ block }}<a href="{{ include.bibtexurl }}">bibtex</a> | {% endcapture %}
+{% endif %}
+<!-- If we have a block, display it after removing the pipe -->
+{% if block.size > 0 %}
+{% assign length = block.size | minus: 3 %}
+{{ block | slice: 0, length }}
+{% endif %}
